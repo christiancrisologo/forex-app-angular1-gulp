@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="page-header">
+    <h3>Currency Converter</h3>
+  </div>
+
+  <form action="" class="fomr-group form-inline ">
+
+    <div class="input-group input-group-lg col-md-4 list-inline">
+      <span class="input-group-addon">$</span>
+      <input type="number" class="form-control" ng-model="vm.amount" placeholder="Amount to convert" aria-describedby="sizing-addon1">
+    </div>
+    Base :
+    <div class="btn-group">
+      <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown" ng-click="vm.showDPBaseList=!vm.showDPBaseList"
+        aria-haspopup="true" aria-expanded="false">{{ vm.selectedBaseRate.label  }} <span class="caret"></span></button>
+
+      <ul class="dropdown-menu dropdown-menu-lg" ng-show="vm.showDPBaseList">
+        <li ng-repeat="rate in vm.rates">
+          <a href ng-click="vm.selectedBaseRate=rate;vm.showDPBaseList=!vm.showDPBaseList">{{rate.label}}  </a>
+        </li>
+      </ul>
+    </div>
+    Target :
+    <div class="btn-group">
+      <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown" ng-click="vm.showDPConverList=!vm.showDPConverList"
+        aria-haspopup="true" aria-expanded="false">{{ vm.selectedTargetRate.label    }} <span class="caret"></span></button>
+
+      <ul class="dropdown-menu dropdown-menu-lg" ng-show="vm.showDPConverList">
+        <li ng-repeat="rate in vm.rates">
+          <a href ng-click="vm.selectedTargetRate=rate;vm.showDPConverList=!vm.showDPConverList">{{rate.label}}  </a>
+        </li>
+      </ul>
+    </div>
+
+    <button class="btn btn-lg btn-primary" ng-click="vm.convert($event)">Convert</button>
+
+
+  </form>
+
+
+
+  <div class="panel panel-default" ng-show="!!vm.convertResult">
+    <div class="panel-heading">
+      <h5 class="panel-title">RESULT: </h5>
+    </div>
+    <div class="panel-body">
+      <p>
+        <h2>{{vm.calculatedResult || 0 | currency}}</h2>
+      </p>
+      <p> Base : {{vm.convertResult.base }} </p>
+      <p> Target Currency: {{vm.selectedTargetRate.label }} </p>
+      <p> Rate: {{vm.convertResult.rates[vm.selectedTargetRate.label] }} </p>
+      <p> Date: {{vm.convertResult.date | date}} </p>
+    </div>
+  </div>
+
+
+</div>
+<style>
+.dropdown-menu {
+    display: block!important;
+    height: 300px;
+    min-height: 300px;
+    overflow: auto;
+  
+}
+</style>
