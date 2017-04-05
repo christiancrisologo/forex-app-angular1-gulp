@@ -6,10 +6,15 @@ Find the live demo here : http://cyian.com/samples/forexapp/
 Setup:
 
  1. Clone the repo 
- 2. Install the libraries and dependencies  ;
+ 
+ 2. Install the libraries and dependencies  :
+ 
       $ npm install
- 3. Run the app
-      gulp serve
+      
+ 3. Run the app:
+ 
+      $ gulp serve
+      
 
 
 
